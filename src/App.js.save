@@ -1,0 +1,75 @@
+BBOBO
+pimport './App.css';
+import Contact from "./components/Contact";
+import AddContactForm from "./components/AddContactForm";
+
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      username: 'Alexander',
+      phoneNumber: '7703695370',
+      email:'alexsantosantana@live.com',
+      contacts: [
+        {name: 'zlexander Santos',
+      phoneNumber: '77803695370',
+    address: '3155 Flowers Rd S',
+    city: 'Atlanta',
+    email: 'alexsantosantana@live.com'
+  },
+        {name: 'Clexander Santos',
+      phoneNumber: '77803695370',
+    address: '3155 Flowers Rd S',
+    city: 'Atlanta',
+    email: 'alexsantosantana@live.com'
+  },
+        {name: 'glexander Santos',
+      phoneNumber: '77803695370',
+    address: '3155 Flowers Rd S',
+    city: 'Atlanta',
+    email: 'alexsantosantana@live.com'
+  },
+        {name: 'Elexander Santos',
+      phoneNumber: '77803695370',
+    address: '3155 Flowers Rd S',
+    city: 'Atlanta',
+    email: 'alexsantosantana@live.com'
+  },
+      ],
+    }
+  }
+addContact= (contact) =>{
+  this.setState(prevState => ({...prevState, contacts: [...prevState.contacts, contact]}))
+}
+handleSort = (e) =>{
+  const value = e.target.value
+  console.log(value);
+  
+  const sortedArray = this.state.contacts.slice().sort((a,b) => a[value] - b[value])]
+  console.log(sortedArray);
+  
+  this.setState(prevState => ({...prevState, contacts: sortedArray}))
+}
+
+
+  render() {
+    const {username, phoneNumber, email, contacts} = this.state;
+    return (
+      <div>
+        <div className="userInfo">
+        <h1>{username}</h1>
+        <h3>{phoneNumber}</h3>
+        <h4>{email}</h4>
+        </div>
+        <AddContactForm addContact={this.addContact}/>
+        <select name="sortBy" id="" onChange={this.handleSort}>
+        <option value="name">Name(Ascending)</option>
+        <option value="city">City</option>
+        </select>
+        {contacts.map(contact => <Contact information={contact} />)}
+      </div>
+    )
+  }
+}

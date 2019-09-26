@@ -1,0 +1,23 @@
+Oimport React, {useState} from 'react'
+OOOBOOOBBBBOBnn
+export default function Contact(props) {
+    const [State, setState] = useState({
+        isOpenend: false
+    })
+    const {name, state, city, } = contact;
+    const hiddenAttributes= ['phoneNumber', 'address', 'email']
+    const hideStyle= {
+        display: State.isOpenend ? 'block' : 'none'
+    }
+
+    return (
+        <div>
+        <button onClick={()=> setState({isOpenend: !State.isOpenend})}>+</button>
+        <h5>{name}</h5> 
+        <div>
+        {city && state && <p>{city}, {state}</p> }
+        {hiddenAttributes.map(key => <p style={hideStyle}>{contact[key]}</p>)}
+        </div>
+        </div>
+    )
+}
