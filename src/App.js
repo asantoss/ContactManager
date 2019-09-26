@@ -1,5 +1,5 @@
 import './App.css';
-import ContactsContainer from './components/ContactsContainer';
+import { ContactsContainer } from './components/ContactsContainer';
 import AddContactForm from './components/AddContactForm';
 
 import React, { Component } from 'react';
